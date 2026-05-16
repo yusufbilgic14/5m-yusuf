@@ -248,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              icon: const Icon(Icons.menu_rounded, color: Colors.white),
+              icon: const Icon(Icons.menu_rounded, color: Color(0xFFDDB822)),
               onPressed: () => Scaffold.of(context).openDrawer(),
               tooltip: 'Menü',
             );
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.restaurant, color: Colors.white),
+            icon: const Icon(Icons.restaurant, color: Color(0xFFDDB822)),
             tooltip: l10n.cafeteriaMenu,
             onPressed: () {
               setState(() {
@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Stack(
               children: [
-                const Icon(Icons.notifications_rounded, color: Colors.white),
+                const Icon(Icons.notifications_rounded, color: Color(0xFFDDB822)),
                 if (_notifications.where((n) => !n['isRead']).isNotEmpty)
                   Positioned(
                     right: 0,
@@ -286,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         '${_notifications.where((n) => !n['isRead']).length}',
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFFDDB822),
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                         ),
@@ -370,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Icon(
           Icons.campaign_outlined,
-          color: AppThemes.getPrimaryColor(context),
+          color: const Color(0xFFDDB822),
           size: 20,
         ),
         const SizedBox(width: 8),
@@ -388,7 +388,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Text(
             l10n.seeAll,
             style: TextStyle(
-              color: AppThemes.getPrimaryColor(context),
+              color: const Color(0xFFDDB822),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -467,8 +467,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  AppThemes.getPrimaryColor(context),
-                  AppThemes.getPrimaryColor(context).withValues(alpha: 0.7),
+                  const Color(0xFFDDB822),
+                  const Color(0xFFDDB822).withValues(alpha: 0.7),
                 ],
               ),
             ),
@@ -476,7 +476,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Icon(
                 Icons.campaign_outlined,
                 size: 40,
-                color: Colors.white,
+                color: Color(0xFFDDB822),
               ),
             ),
           );
@@ -511,13 +511,13 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.9),
+          color: Colors.black.withValues(alpha: 0.9),
           borderRadius: BorderRadius.circular(6),
         ),
         child: Text(
           announcement['date']!,
           style: TextStyle(
-            color: AppThemes.getPrimaryColor(context),
+            color: const Color(0xFFDDB822),
             fontSize: 12,
             fontWeight: FontWeight.w600,
           ),
@@ -541,7 +541,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(
               announcement['title']!,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color(0xFFDDB822),
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -552,7 +552,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(
               announcement['description'] ?? '',
               style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.9),
+                color: const Color(0xFFDDB822).withValues(alpha: 0.9),
                 fontSize: 13,
                 fontWeight: FontWeight.w400,
               ),
@@ -579,7 +579,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 6,
             decoration: BoxDecoration(
               color: index == _currentAnnouncementIndex
-                  ? AppThemes.getPrimaryColor(context)
+                  ? const Color(0xFFDDB822)
                   : AppThemes.getSecondaryTextColor(
                       context,
                     ).withValues(alpha: 0.3),
@@ -610,7 +610,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Icon(
               Icons.schedule_outlined,
-              color: AppThemes.getPrimaryColor(context),
+              color: const Color(0xFFDDB822),
               size: 20,
             ),
             const SizedBox(width: 8),
@@ -634,7 +634,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(
                 l10n.todayDate,
                 style: TextStyle(
-                  color: AppThemes.getPrimaryColor(context),
+                  color: const Color(0xFFDDB822),
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
@@ -914,7 +914,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     course.courseCode,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFFDDB822),
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -1055,7 +1055,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Icon(
             Icons.notifications_outlined,
-            color: AppThemes.getPrimaryColor(context),
+            color: const Color(0xFFDDB822),
             size: 18,
           ),
           const SizedBox(width: 8),
@@ -1063,7 +1063,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               l10n.notifications,
               style: TextStyle(
-                color: AppThemes.getPrimaryColor(context),
+                color: const Color(0xFFDDB822),
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -1089,7 +1089,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Text(
         l10n.markAllRead,
         style: TextStyle(
-          color: AppThemes.getPrimaryColor(context),
+          color: const Color(0xFFDDB822),
           fontSize: 13,
           fontWeight: FontWeight.w500,
         ),
@@ -1107,7 +1107,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       icon: Icon(
         Icons.keyboard_arrow_up_outlined,
-        color: AppThemes.getPrimaryColor(context),
+        color: const Color(0xFFDDB822),
         size: 20,
       ),
     );
@@ -1179,7 +1179,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BoxDecoration(
       color: notification['isRead']
           ? AppThemes.getSurfaceColor(context)
-          : AppThemes.getPrimaryColor(context).withValues(alpha: 0.05),
+          : const Color(0xFFDDB822).withValues(alpha: 0.05),
       border: Border(
         bottom: BorderSide(
           color: AppThemes.getSecondaryTextColor(
@@ -1252,7 +1252,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 6,
             height: 6,
             decoration: BoxDecoration(
-              color: AppThemes.getPrimaryColor(context),
+              color: const Color(0xFFDDB822),
               shape: BoxShape.circle,
             ),
           ),
@@ -1392,7 +1392,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Icon(
           Icons.restaurant_outlined,
-          color: AppThemes.getPrimaryColor(context),
+          color: const Color(0xFFDDB822),
           size: 18,
         ),
         const SizedBox(width: 8),

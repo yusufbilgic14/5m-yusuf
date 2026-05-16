@@ -4,8 +4,8 @@ import '../constants/app_constants.dart';
 /// Uygulama tema konfigürasyonları / App theme configurations
 class AppThemes {
   // Ana renkler / Primary colors (tema bağımsız / theme independent)
-  static const Color primaryNavy = Color(0xFF1E3A8A);
-  static const Color primaryNavyLight = Color(0xFF3B82F6);
+  static const Color primaryNavy = Color(0xFF000000);
+  static const Color primaryGold = Color(0xFFDDB822);
 
   /// Açık tema / Light theme
   static ThemeData get lightTheme {
@@ -16,9 +16,9 @@ class AppThemes {
       // Ana renk şeması / Primary color scheme
       colorScheme: const ColorScheme.light(
         primary: primaryNavy,
-        onPrimary: Colors.white,
-        secondary: primaryNavyLight,
-        onSecondary: Colors.white,
+        onPrimary: primaryGold,
+        secondary: primaryGold,
+        onSecondary: primaryNavy,
         surface: Colors.white,
         onSurface: Colors.black87,
         error: Colors.red,
@@ -28,19 +28,19 @@ class AppThemes {
       // AppBar teması / AppBar theme
       appBarTheme: const AppBarTheme(
         backgroundColor: primaryNavy,
-        foregroundColor: Colors.white,
+        foregroundColor: primaryGold,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontSize: AppConstants.fontSizeXLarge,
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: primaryGold,
         ),
       ),
 
       // Bottom navigation teması / Bottom navigation theme
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
-        selectedItemColor: primaryNavy,
+        selectedItemColor: primaryGold,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
       ),
@@ -55,33 +55,32 @@ class AppThemes {
 
       // Ana renk şeması / Primary color scheme
       colorScheme: const ColorScheme.dark(
-        primary:
-            primaryNavyLight, // Koyu temada daha açık mavi / Lighter blue for dark theme
-        onPrimary: Colors.white,
-        secondary: primaryNavy,
-        onSecondary: Colors.white,
-        surface: Color(0xFF1E293B), // Koyu gri yüzey / Dark gray surface
+        primary: primaryGold,
+        onPrimary: primaryNavy,
+        secondary: primaryGold,
+        onSecondary: primaryNavy,
+        surface: Color(0xFF1E293B),
         onSurface: Colors.white,
-        error: Color(0xFFEF4444), // Daha yumuşak kırmızı / Softer red
+        error: Color(0xFFEF4444),
         onError: Colors.white,
       ),
 
       // AppBar teması / AppBar theme
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xFF1E293B),
-        foregroundColor: Colors.white,
+        backgroundColor: primaryNavy,
+        foregroundColor: primaryGold,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontSize: AppConstants.fontSizeXLarge,
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: primaryGold,
         ),
       ),
 
       // Bottom navigation teması / Bottom navigation theme
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Color(0xFF1E293B),
-        selectedItemColor: primaryNavyLight,
+        selectedItemColor: primaryGold,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
       ),

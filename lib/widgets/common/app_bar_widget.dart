@@ -35,10 +35,8 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
     final boxShadowColor = isDark
         ? Colors.black.withValues(alpha: 0.25)
         : AppConstants.primaryColor.withValues(alpha: 0.13);
-    final textColor = isDark ? Colors.white : Colors.white;
-    final subtitleColor = isDark
-        ? Colors.white70
-        : Colors.white.withValues(alpha: 0.85);
+    final textColor = const Color(0xFFDDB822);
+    final subtitleColor = const Color(0xFFDDB822).withValues(alpha: 0.85);
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

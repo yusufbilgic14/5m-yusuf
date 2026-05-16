@@ -4,9 +4,7 @@ import '../services/firebase_auth_service.dart';
 /// Uygulama genelinde kullanılan sabitler / App-wide constants
 class AppConstants {
   // Ana renk referansları (AppThemes'de tanımlı) / Main color references (defined in AppThemes)
-  static const Color primaryColor = Color(
-    0xFF1E3A8A,
-  ); // Navy blue - AppThemes ile tutarlılık için / For consistency with AppThemes
+  static const Color primaryColor = Color(0xFF000000);
 
   /// Tema-aware ikon rengi / Theme-aware icon color
   static Color getIconColor(BuildContext context) {
