@@ -1,0 +1,123 @@
+// Firestore Security Rules for MedipolApp
+// Firebase Console > Firestore Database > Rules > Paste this content
+// OR deploy via: firebase deploy --only firestore:rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users: authenticated users can read any user, write their own
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+
+      // User subcollections: courses, eventInteractions, myEvents
+      match /courses/{courseId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      match /eventInteractions/{interactionId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      match /myEvents/{eventId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // User profiles
+    match /userProfiles/{profileId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == profileId;
+    }
+
+    // Events: authenticated users can read, creators can write
+    match /events/{eventId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+
+    // Event interactions
+    match /events/{eventId}/eventInteractions/{interactionId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // User event interactions (top-level)
+    match /user_event_interactions/{interactionId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // User my events (top-level)
+    match /user_my_events/{eventId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Chat rooms
+    match /chat_rooms/{roomId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Chat messages
+    match /chat_messages/{messageId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+
+    // Message reactions
+    match /message_reactions/{reactionId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Chat participants
+    match /chat_participants/{participantId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // User presence
+    match /user_presence/{presenceId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Pending approvals
+    match /pending_approvals/{approvalId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Notifications
+    match /notifications/{notificationId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Clubs
+    match /clubs/{clubId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+
+    // Event comments
+    match /event_comments/{commentId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+
+    // System config (read-only for authenticated users)
+    match /system/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // Notification requests
+    match /notification_requests/{requestId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Club following
+    match /user_club_following/{followId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen>
       width: 180,
       height: 180,
       decoration: BoxDecoration(
-        color: AppConstants.primaryColor,
+        color: const Color(0xFFDDB822),
         borderRadius: BorderRadius.circular(AppConstants.radiusXLarge),
       ),
       child: const Icon(Icons.school, color: Colors.white, size: 80),
@@ -440,24 +440,15 @@ class _LoginScreenState extends State<LoginScreen>
                       children: [
                         const SizedBox(height: 0), // Üst boşluk minimum
                         // Logo ve dil seçici aynı satırda
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Image.asset(
-                                'assets/images/loginlogo.png',
-                                width: 320,
-                                height: 210,
-                                fit: BoxFit.contain,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return _buildFallbackLogo();
-                                },
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            // Dil seçici dropdown
-                            _buildLanguageDropdown(),
-                          ],
+                        // Logo
+                        Image.asset(
+                          'assets/images/black&yellow.png',
+                          width: 320,
+                          height: 210,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) {
+                            return _buildFallbackLogo();
+                          },
                         ),
                         // Form kartı / Form card
                         SlideTransition(
@@ -480,8 +471,6 @@ class _LoginScreenState extends State<LoginScreen>
               ),
             ),
           ),
-          // Language dropdown overlay - positioned at the top level
-          _buildLanguageDropdownOverlay(),
         ],
       ),
     );
@@ -493,7 +482,7 @@ class _LoginScreenState extends State<LoginScreen>
       children: [
         // Logo resmi - Standalone büyük logo / Standalone large logo
         Image.asset(
-          'assets/images/loginlogo.png',
+          'assets/images/black&yellow.png',
           width: 280,
           height: 280,
           fit: BoxFit.contain,
@@ -501,7 +490,7 @@ class _LoginScreenState extends State<LoginScreen>
             print('=== LOGO ERROR DEBUG ===');
             print('Error: $error');
             print('StackTrace: $stackTrace');
-            print('Trying to load: assets/images/loginlogo.png');
+            print('Trying to load: assets/images/black&yellow.png');
             print('========================');
             return _buildFallbackLogo();
           },
@@ -589,7 +578,7 @@ class _LoginScreenState extends State<LoginScreen>
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? Colors.white
-                            : AppConstants.primaryColor,
+                            : const Color(0xFFDDB822),
                         letterSpacing: -0.3,
                       ),
                     ),
@@ -770,7 +759,7 @@ class _LoginScreenState extends State<LoginScreen>
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: AppConstants.primaryColor,
+                color: const Color(0xFFDDB822),
                 width: 1.5,
               ),
             ),
@@ -927,7 +916,7 @@ class _LoginScreenState extends State<LoginScreen>
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            FaIcon(
               FontAwesomeIcons.earthAmericas,
               size: 18,
               color: AppConstants.getIconColor(context),
@@ -1017,8 +1006,8 @@ class _LoginScreenState extends State<LoginScreen>
         decoration: BoxDecoration(
           color: isSelected
               ? (isDark
-                    ? AppConstants.primaryColor.withValues(alpha: 0.2)
-                    : AppConstants.primaryColor.withValues(alpha: 0.1))
+                    ? const Color(0xFFDDB822).withValues(alpha: 0.2)
+                    : const Color(0xFFDDB822).withValues(alpha: 0.1))
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
         ),
@@ -1033,7 +1022,7 @@ class _LoginScreenState extends State<LoginScreen>
                 fontSize: AppConstants.fontSizeSmall,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                 color: isSelected
-                    ? (isDark ? Colors.white : AppConstants.primaryColor)
+                    ? (isDark ? Colors.white : const Color(0xFFDDB822))
                     : (isDark ? Colors.white70 : Colors.black87),
               ),
             ),
@@ -1262,7 +1251,7 @@ class _LoginScreenState extends State<LoginScreen>
                       _rememberMe = value ?? false;
                     });
                   },
-                  activeColor: AppConstants.primaryColor,
+                  activeColor: const Color(0xFFDDB822),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   visualDensity: VisualDensity.compact,
                 ),
@@ -1301,7 +1290,7 @@ class _LoginScreenState extends State<LoginScreen>
             child: Text(
               l10n.forgotPassword,
               style: TextStyle(
-                color: AppConstants.primaryColor,
+                color: const Color(0xFFDDB822),
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
               ),
@@ -1397,7 +1386,7 @@ class _LoginScreenState extends State<LoginScreen>
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
-                      color: AppConstants.primaryColor,
+                      color: const Color(0xFFDDB822),
                       width: 1.5,
                     ),
                   ),
@@ -1447,7 +1436,7 @@ class _LoginScreenState extends State<LoginScreen>
               _agreeToTerms = value ?? false;
             });
           },
-          activeColor: AppConstants.primaryColor,
+          activeColor: const Color(0xFFDDB822),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         Expanded(
@@ -1471,7 +1460,7 @@ class _LoginScreenState extends State<LoginScreen>
                     TextSpan(
                       text: 'Kullanım Şartları',
                       style: TextStyle(
-                        color: AppConstants.primaryColor,
+                        color: const Color(0xFFDDB822),
                         fontWeight: FontWeight.w600,
                         decoration: TextDecoration.underline,
                       ),
@@ -1480,7 +1469,7 @@ class _LoginScreenState extends State<LoginScreen>
                     TextSpan(
                       text: 'Gizlilik Politikası',
                       style: TextStyle(
-                        color: AppConstants.primaryColor,
+                        color: const Color(0xFFDDB822),
                         fontWeight: FontWeight.w600,
                         decoration: TextDecoration.underline,
                       ),
@@ -1510,14 +1499,14 @@ class _LoginScreenState extends State<LoginScreen>
                   ? _handleFirebaseSignIn
                   : _handleFirebaseSignUp),
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppConstants.primaryColor,
+          backgroundColor: const Color(0xFFDDB822),
           foregroundColor: Colors.white,
           elevation: 0,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          disabledBackgroundColor: AppConstants.primaryColor.withValues(
+          disabledBackgroundColor: const Color(0xFFDDB822).withValues(
             alpha: 0.6,
           ),
         ),
@@ -1570,7 +1559,7 @@ class _LoginScreenState extends State<LoginScreen>
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: AppConstants.primaryColor,
+              color: const Color(0xFFDDB822),
             ),
           ),
         ),
@@ -1643,7 +1632,7 @@ class _LoginScreenState extends State<LoginScreen>
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: AppConstants.primaryColor,
+                color: const Color(0xFFDDB822),
                 width: 1.5,
               ),
             ),
@@ -1733,7 +1722,7 @@ class _LoginScreenState extends State<LoginScreen>
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: AppConstants.primaryColor,
+                color: const Color(0xFFDDB822),
                 width: 1.5,
               ),
             ),

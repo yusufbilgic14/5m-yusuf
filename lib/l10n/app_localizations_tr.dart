@@ -15,7 +15,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get loginTitle => 'Giriş Yap';
 
   @override
-  String get loginSubtitle => 'Öğrenci bilgilerinizle giriş yapın';
+  String get loginSubtitle => 'Üye bilgilerinizle giriş yapın';
 
   @override
   String get studentId => 'Öğrenci Numarası';

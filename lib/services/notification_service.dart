@@ -98,10 +98,15 @@ class NotificationService {
         sound: true,
       );
 
-      final granted = settings.authorizationStatus == AuthorizationStatus.authorized;
+      final granted = settings.authorizationStatus == AuthorizationStatus.authorized ||
+          settings.authorizationStatus == AuthorizationStatus.provisional;
       debugPrint('🔔 NotificationService: Permission status: ${settings.authorizationStatus}');
       
-      return granted;
+      if (!granted) {
+        debugPrint('⚠️ NotificationService: Notification permissions not yet granted (${settings.authorizationStatus}). Continuing setup...');
+      }
+
+      return true;
     } catch (e) {
       debugPrint('❌ NotificationService: Permission request error: $e');
       return false;
@@ -120,10 +125,11 @@ class NotificationService {
       debugPrint('🔑 NotificationService: Setting up FCM token');
 
       // Get current FCM token
+      // APNS token may not be available on simulator - handle gracefully
       final token = await _firebaseMessaging.getToken();
       if (token == null) {
-        debugPrint('❌ NotificationService: Failed to get FCM token');
-        return false;
+        debugPrint('⚠️ NotificationService: FCM token not available (likely running on simulator without APNS)');
+        return true;
       }
 
       _currentFCMToken = token;
@@ -134,6 +140,12 @@ class NotificationService {
 
       return true;
     } catch (e) {
+      // APNS not available on simulator - not a critical error
+      final errorStr = e.toString();
+      if (errorStr.contains('apns-token-not-set') || errorStr.contains('APNS')) {
+        debugPrint('⚠️ NotificationService: APNS not available (simulator or missing configuration). Push notifications will not work until APNS is configured.');
+        return true;
+      }
       debugPrint('❌ NotificationService: FCM token setup error: $e');
       return false;
     }

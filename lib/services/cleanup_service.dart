@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:async';
 
@@ -46,6 +47,14 @@ class CleanupService {
   /// Tüm temizlik işlemlerini gerçekleştir
   Future<void> performCleanup() async {
     try {
+      // Skip cleanup if no user is authenticated
+      // Kullanıcı giriş yapmadıysa temizliği atla
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        debugPrint('🧹 CleanupService: Skipping cleanup - no authenticated user');
+        return;
+      }
+
       debugPrint('🧹 CleanupService: Starting cleanup operations');
 
       // Run cleanup operations in parallel for better performance
