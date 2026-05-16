@@ -50,3 +50,10 @@ app.*.map.json
 
 # Firebase configuration with server key (keep secure)
 lib/config/firebase_config.dart
+
+# Firebase & API keys (contains sensitive credentials)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+google_config_files/GoogleService-Info.plist
+google_config_files/google-services.json
+lib/firebase_options.dart
