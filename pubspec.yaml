@@ -55,7 +55,7 @@ dependencies:
   image_picker: ^1.0.7
   
   # Cached network image for efficient image loading
-  cached_network_image: ^3.3.1
+  cached_network_image: ^3.4.1
   
   # File picker for document selection
   file_picker: ^8.0.0+1
